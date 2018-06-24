@@ -8,7 +8,7 @@ class Books extends React.Component{
 
     render (){
 
-        const { booksList } = this.props
+        const { booksList, onShelfUpdate } = this.props
 
         const currently = booksList.filter((book)=> (
             book.shelf === 'currentlyReading'         
@@ -32,7 +32,7 @@ class Books extends React.Component{
                         <h2 className="bookshelf-title">Currently Reading</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                 <Book books={currently}/>
+                                 <Book onShelfUpdate={onShelfUpdate} books={currently}/>
                             </ol>
                         </div>
                     </div>
@@ -40,7 +40,7 @@ class Books extends React.Component{
                             <h2 className="bookshelf-title">Want to Read</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
-                                     <Book books={want} />
+                                     <Book onShelfUpdate={onShelfUpdate} books={want} />
                                 </ol>
                             </div>
                         </div>
@@ -48,7 +48,7 @@ class Books extends React.Component{
                             <h2 className="bookshelf-title">Read</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
-                                    <Book books={read} />
+                                    <Book onShelfUpdate={onShelfUpdate} books={read} />
                                 </ol>
                             </div>
                         </div>
