@@ -10,12 +10,25 @@ class BooksApp extends React.Component {
     books: []
   }
 
+  onShelfUpdate = (shelf,book) => {
+    BooksAPI.update(book,shelf)
+    this.setState((currentState) => ({
+       books: currentState.books.map(b => {
+        if (b.id === book.id){
+          book.shelf = shelf 
+        }
+        return b;
+       })
+     })) 
+  }
+
+
   componentDidMount() {
     /*Get all books from BooksAPI  */
     BooksAPI.getAll()
-      .then((books) => {
+      .then((allBooks) => {
         this.setState(() => ({
-          books
+          books: allBooks
         }))
       })
   }
@@ -27,6 +40,7 @@ class BooksApp extends React.Component {
         <Route exact path='/' render = {() => (
           <Books
             booksList= {this.state.books}
+            onShelfUpdate={this.onShelfUpdate}
           />
         )}/>
 
