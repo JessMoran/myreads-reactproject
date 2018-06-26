@@ -22,7 +22,6 @@ class BooksApp extends React.Component {
      })) 
   }
 
-
   componentDidMount() {
     /*Get all books from BooksAPI  */
     BooksAPI.getAll()
@@ -45,7 +44,9 @@ class BooksApp extends React.Component {
         )}/>
 
         <Route exact path='/search' render = {() => (
-          <Search/>
+          <Search
+            search={BooksAPI.search}
+          />
         )}/>
       </div>
     )
