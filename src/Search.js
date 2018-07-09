@@ -52,6 +52,7 @@ class Search extends React.Component{
                     <ol className="books-grid">
                         <Book
                             books={this.state.searchedBooks}
+                            update={}
                         />
                     </ol>
                 </div>
